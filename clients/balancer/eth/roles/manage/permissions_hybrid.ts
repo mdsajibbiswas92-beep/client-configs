@@ -100,13 +100,9 @@ export default [
   allow.mainnet.compound_v2.cUSDC.redeemUnderlying(),
 
   // Compound v2 - Claim COMP
+  // WARNING!: The address[] parameter with the cTokens[] was removed since it's unnecessary.
   allow.mainnet.compound_v2.comptroller["claimComp(address,address[])"](
-    avatar,
-    c.subset([
-      contracts.mainnet.compound_v2.cAAVE,
-      contracts.mainnet.compound_v2.cDAI,
-      contracts.mainnet.compound_v2.cUSDC,
-    ])
+    avatar
   ),
 
   // Compound v3 - USDC
