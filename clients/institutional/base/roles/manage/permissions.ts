@@ -1,6 +1,7 @@
 import { c } from "zodiac-roles-sdk"
 import { allow } from "zodiac-roles-sdk/kit"
-import { DAI, USDC, cbETH, morpho } from "../../../../../eth-sdk/addresses_base"
+import { allow as allowAction } from "defi-kit/base"
+import { USDC, cbETH, morpho } from "../../../../../eth-sdk/addresses_base"
 import { USDC as USDC_eth } from "../../../../../eth-sdk/addresses"
 import { contracts } from "../../../../../eth-sdk/config"
 import { allowErc20Approve } from "../../../../../utils/erc20"
@@ -11,41 +12,12 @@ export default [
   /*********************************************
    * DeFi-Kit permissions
    *********************************************/
+  // Aave v3 - Deposit USDC
+  allowAction.aaveV3.deposit({ targets: ["USDC"] }),
 
   /*********************************************
    * Typed-presets permissions
    *********************************************/
-  // Aave v3 - Deposit DAI
-  ...allowErc20Approve([DAI], [contracts.base.aave_v3.pool_v3]),
-  allow.base.aave_v3.pool_v3["supply(address,uint256,address,uint16)"](
-    DAI,
-    undefined,
-    c.avatar
-  ),
-  allow.base.aave_v3.pool_v3["withdraw(address,uint256,address)"](
-    DAI,
-    undefined,
-    c.avatar
-  ),
-  allow.base.aave_v3.pool_v3["setUserUseReserveAsCollateral(address,bool)"](
-    DAI
-  ),
-  // Aave v3 - Deposit USDC
-  ...allowErc20Approve([USDC], [contracts.base.aave_v3.pool_v3]),
-  allow.base.aave_v3.pool_v3["supply(address,uint256,address,uint16)"](
-    USDC,
-    undefined,
-    c.avatar
-  ),
-  allow.base.aave_v3.pool_v3["withdraw(address,uint256,address)"](
-    USDC,
-    undefined,
-    c.avatar
-  ),
-  allow.base.aave_v3.pool_v3["setUserUseReserveAsCollateral(address,bool)"](
-    USDC
-  ),
-
   // Morpho Blue - cbETH/USDC
   ...allowErc20Approve([USDC], [contracts.mainnet.morpho.morpho_blue]),
   allow.mainnet.morpho.morpho_blue.supply(
