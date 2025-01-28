@@ -22,7 +22,7 @@ export default [
   // Aave v3 - Borrow XDAI
   allowAction.aave_v3.borrow({ targets: ["XDAI"] }),
 
-  // CowSwap - [sDAI, USDC, USDCe, WXDAI] -> [ETH, sDAI, USDC, USDCe, WXDAI]
+  // CowSwap - [sDAI, USDC, USDCe, WXDAI] -> [XDAI, sDAI, USDC, USDCe, WXDAI]
   allowAction.cowswap.swap({
     sell: [sDAI, USDC, USDCe, WXDAI],
     buy: ["XDAI", sDAI, USDC, USDCe, WXDAI],
