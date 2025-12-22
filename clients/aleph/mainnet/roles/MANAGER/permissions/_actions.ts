@@ -3,6 +3,7 @@ import {
   ETHPlus,
   ezETH,
   GEAR,
+  KING,
   MORPHO,
   rETH,
   rsETH,
@@ -14,6 +15,8 @@ import {
 import { Parameters } from "../../../parameters"
 
 export default (parameters: Parameters) => [
+  // Aave v3 Core Market - Deposit rETH
+  allowAction.aave_v3.deposit({ market: "Core", targets: ["rETH"] }),
   // Aave v3 Core Market - Deposit rsETH
   allowAction.aave_v3.deposit({ market: "Core", targets: ["rsETH"] }),
   // Aave v3 Core Market - Deposit weETH
@@ -38,13 +41,14 @@ export default (parameters: Parameters) => [
   // Aave v3 Prime Market - Borrow wstETH
   allowAction.aave_v3.borrow({ market: "Prime", targets: ["wstETH"] }),
 
-  // CowSwap - [ETHPlus, ezETH, GEAR, MORPHO, rETH, rsETH, stETH, weETH, WETH, wstETH] <->
+  // CowSwap - [ETHPlus, ezETH, GEAR, KING, MORPHO, rETH, rsETH, stETH, weETH, WETH, wstETH] <->
   // [ETHPlus, ezETH, GEAR, MORPHO, ETH, rsETH, stETH, weETH, WETH, wstETH]
   allowAction.cowswap.swap({
     sell: [
       ETHPlus,
       ezETH,
       GEAR,
+      KING,
       MORPHO,
       rETH,
       rsETH,
