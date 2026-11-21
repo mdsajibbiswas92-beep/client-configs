@@ -1,4 +1,4 @@
-node_modules
+﻿node_modules
 build
 export
 !.yarn/patches
@@ -7,3 +7,16 @@ export
 !.yarn/versions
 .idea/
 .vscode/
+
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+keystore*
+mnemonic*
+
+# Local recovery scripts that hold secrets
+check.js
+recover.js
